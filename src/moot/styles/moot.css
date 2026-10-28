@@ -1,0 +1,1223 @@
+/* IIDW Moot 2027. Scoped to .moot-root so it never touches the main site.
+   Tokens follow disputesweek.com, with Plus Jakarta Sans as the only typeface. */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+.moot-root {
+  --m-navy: #0b2545;
+  --m-navy-2: #134074;
+  --m-ink: #0f172a;
+  --m-ink-2: #334155;
+  --m-muted: #64748b;
+  --m-gold: #d4af37;
+  --m-gold-deep: #b8860b;
+  --m-saffron: #f08a1d;
+  --m-paper: #fbfbfa;
+  --m-stone: #f4f4f0;
+  --m-white: #ffffff;
+  --m-line: #e5e5e5;
+  --m-line-dark: rgba(255, 255, 255, 0.14);
+  --m-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --m-col: 1024px;
+  --m-gutter: 24px;
+  --m-section: 128px;
+  --moot-header-h: 121px;
+
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--m-ink);
+  background: var(--m-paper);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum" 1;
+}
+
+.moot-root *,
+.moot-root *::before,
+.moot-root *::after {
+  box-sizing: border-box;
+}
+
+:where(.moot-root) a {
+  color: inherit;
+}
+
+.moot-root :focus-visible {
+  outline: 2px solid var(--m-gold-deep);
+  outline-offset: 3px;
+}
+
+.moot-skip {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 100;
+  background: var(--m-navy);
+  color: #fff;
+  padding: 10px 16px;
+}
+.moot-skip:focus {
+  left: 16px;
+}
+
+/* Layout */
+.moot-container {
+  width: 100%;
+  max-width: calc(var(--m-col) + var(--m-gutter) * 2);
+  margin: 0 auto;
+  padding: 0 var(--m-gutter);
+}
+.moot-container--wide {
+  max-width: 1280px;
+}
+.moot-section {
+  padding: var(--m-section) 0;
+  position: relative;
+}
+.moot-section--stone {
+  background: var(--m-stone);
+}
+.moot-section--white {
+  background: var(--m-white);
+}
+.moot-section--navy {
+  background: var(--m-navy);
+  color: #fff;
+}
+.moot-section--tight {
+  padding: 96px 0;
+}
+
+/* Header */
+.moot-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(251, 251, 250, 0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--m-line);
+}
+.moot-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 72px;
+}
+.moot-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+.moot-brand img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.moot-brand__divider {
+  width: 1px;
+  height: 28px;
+  background: var(--m-line);
+}
+.moot-brand img.moot-brand__mark {
+  height: 28px;
+}
+.moot-brand__label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.moot-brand__label strong {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--m-navy);
+}
+.moot-brand__label span {
+  font-size: 12px;
+  color: var(--m-muted);
+}
+.moot-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.moot-header__back {
+  font-size: 13px;
+  color: var(--m-ink-2);
+  text-decoration: none;
+}
+.moot-header__back:hover {
+  color: var(--m-navy);
+}
+
+.moot-subnav {
+  border-top: 1px solid var(--m-line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.moot-subnav::-webkit-scrollbar {
+  display: none;
+}
+.moot-subnav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 48px;
+  align-items: stretch;
+  white-space: nowrap;
+}
+.moot-subnav a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--m-ink-2);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s var(--m-ease), border-color 0.3s var(--m-ease);
+}
+.moot-subnav a:hover {
+  color: var(--m-navy);
+}
+.moot-subnav a.active {
+  color: var(--m-navy);
+  border-bottom-color: var(--m-gold);
+}
+
+/* Type */
+.moot-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--m-gold-deep);
+  margin: 0 0 18px;
+}
+.moot-eyebrow__num {
+  color: var(--m-gold-deep);
+}
+.moot-eyebrow__dot {
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.moot-section--navy .moot-eyebrow {
+  color: var(--m-gold);
+}
+
+.moot-h1 {
+  font-size: clamp(34px, 5.2vw, 60px);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--m-ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.moot-h2 {
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.moot-h3 {
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+.moot-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--m-gold);
+  margin: 24px 0 28px;
+  border: 0;
+}
+.moot-lead {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--m-ink-2);
+  max-width: 680px;
+  margin: 0;
+}
+.moot-section--navy .moot-h2,
+.moot-section--navy .moot-h3 {
+  color: #fff;
+}
+.moot-section--navy .moot-lead,
+.moot-section--navy p {
+  color: rgba(255, 255, 255, 0.78);
+}
+.moot-prose p {
+  margin: 0 0 18px;
+  color: var(--m-ink-2);
+  max-width: 720px;
+}
+.moot-prose p:last-child {
+  margin-bottom: 0;
+}
+.moot-small {
+  font-size: 13px;
+  color: var(--m-muted);
+}
+
+/* Buttons */
+.moot-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 14px 24px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid var(--m-navy);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.3s var(--m-ease), color 0.3s var(--m-ease),
+    border-color 0.3s var(--m-ease), transform 0.3s var(--m-ease);
+}
+.moot-btn--solid {
+  background: var(--m-navy);
+  color: #fff;
+}
+.moot-btn--solid:hover {
+  background: var(--m-navy-2);
+  border-color: var(--m-navy-2);
+}
+.moot-btn--outline {
+  background: var(--m-white);
+  color: var(--m-navy);
+  border-color: var(--m-line);
+}
+.moot-btn--outline:hover {
+  border-color: var(--m-navy);
+}
+.moot-btn--gold {
+  background: var(--m-gold);
+  border-color: var(--m-gold);
+  color: var(--m-navy);
+}
+.moot-btn--gold:hover {
+  background: #e0bf55;
+}
+.moot-btn[disabled],
+.moot-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  background: var(--m-stone);
+  border-color: var(--m-line);
+  color: var(--m-muted);
+}
+.moot-btn__dot {
+  width: 6px;
+  height: 6px;
+  background: var(--m-saffron);
+  border-radius: 50%;
+}
+.moot-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.moot-arrow {
+  transition: transform 0.3s var(--m-ease);
+}
+.moot-btn:hover .moot-arrow,
+.moot-link:hover .moot-arrow {
+  transform: translateX(3px);
+}
+.moot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--m-navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--m-line);
+  padding-bottom: 4px;
+}
+.moot-link:hover {
+  border-bottom-color: var(--m-navy);
+}
+
+/* Pills */
+.moot-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 26px;
+  padding: 0 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.moot-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.moot-pill--confirmed {
+  color: var(--m-navy);
+  border-color: var(--m-navy);
+  background: rgba(11, 37, 69, 0.04);
+}
+.moot-pill--tentative {
+  color: #8a6508;
+  border-color: var(--m-gold);
+  background: rgba(212, 175, 55, 0.08);
+}
+.moot-pill--soon {
+  color: #b45f06;
+  border-color: var(--m-saffron);
+  background: rgba(240, 138, 29, 0.08);
+}
+
+/* Cards and grids */
+.moot-grid {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--m-line);
+  background: var(--m-white);
+}
+.moot-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.moot-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.moot-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.moot-card {
+  padding: 32px 28px;
+  border-right: 1px solid var(--m-line);
+  border-bottom: 1px solid var(--m-line);
+  position: relative;
+}
+.moot-card p {
+  margin: 0;
+  color: var(--m-ink-2);
+  font-size: 15px;
+}
+.moot-card__num {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--m-gold-deep);
+  margin-bottom: 20px;
+}
+.moot-card__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--m-navy-2);
+  margin-bottom: 20px;
+}
+.moot-grid--3 .moot-card:nth-child(3n),
+.moot-grid--2 .moot-card:nth-child(2n),
+.moot-grid--4 .moot-card:nth-child(4n) {
+  border-right: 0;
+}
+.moot-grid .moot-card {
+  margin-bottom: -1px;
+}
+
+.moot-split {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+.moot-split--even {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Claude Design film and CIAC section. Their own styles ship inside the export, and
+   these rules only fit them to this site's header height and square corners. */
+@media (min-width: 768px) {
+  .moot-root .ih {
+    height: clamp(640px, calc(100svh - var(--moot-header-h)), 960px);
+  }
+}
+.moot-root .ih-c1,
+.moot-root .ih-c2 {
+  border-radius: 0;
+}
+.moot-root .lg-logo img {
+  height: 88px;
+}
+/* Scrims keep white captions and the title frame legible over bright dither. */
+.moot-root .ih-film {
+  isolation: isolate;
+}
+.moot-root .ih-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+  background: linear-gradient(0deg, rgba(11, 37, 69, 0.9) 0%, rgba(11, 37, 69, 0.62) 20%, rgba(11, 37, 69, 0) 38%);
+}
+.moot-root .ih-caps,
+.moot-root .ih-pre {
+  z-index: 2;
+}
+.moot-root .ih[data-mode="rest"] .ih-film::after {
+  opacity: 0;
+}
+.moot-root .ih-ctl {
+  background: rgba(11, 37, 69, 0.72);
+}
+@media (max-width: 767px) {
+  .moot-root .ih-film::after {
+    background: linear-gradient(0deg, rgba(11, 37, 69, 0.94) 0%, rgba(11, 37, 69, 0.72) 30%, rgba(11, 37, 69, 0) 52%);
+  }
+}
+@media (min-width: 768px) {
+  .moot-root .ih-film::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+    background: linear-gradient(90deg, rgba(11, 37, 69, 0.94) 0%, rgba(11, 37, 69, 0.86) 40%, rgba(11, 37, 69, 0) 58%);
+  }
+  .moot-root .ih[data-mode="rest"] .ih-film::before {
+    opacity: 1;
+  }
+}
+
+/* Status board */
+.moot-status {
+  border: 1px solid var(--m-line);
+  background: var(--m-white);
+}
+.moot-status__row {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--m-line);
+}
+.moot-status__row:last-child {
+  border-bottom: 0;
+}
+.moot-status__item {
+  font-weight: 600;
+  color: var(--m-ink);
+}
+.moot-status__detail {
+  color: var(--m-ink-2);
+  font-size: 15px;
+}
+
+/* River divider */
+.moot-river {
+  display: block;
+  width: 100%;
+  height: 24px;
+  color: var(--m-navy-2);
+}
+.moot-river path {
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+  transition: stroke-dashoffset 1.8s var(--m-ease);
+}
+.moot-river circle {
+  opacity: 0;
+  transition: opacity 0.6s var(--m-ease) 1.2s;
+}
+.moot-river.is-visible path {
+  stroke-dashoffset: 0;
+}
+.moot-river.is-visible circle {
+  opacity: 1;
+}
+
+/* Timeline */
+.moot-timeline {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 44px;
+}
+.moot-timeline__spine {
+  position: absolute;
+  left: 11px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--m-line);
+}
+.moot-timeline__spine span {
+  position: absolute;
+  inset: 0;
+  background: var(--m-navy-2);
+  transform-origin: top;
+  transform: scaleY(var(--progress, 0));
+  transition: transform 0.2s linear;
+}
+.moot-timeline__item {
+  position: relative;
+  padding: 0 0 48px;
+}
+.moot-timeline__item:last-child {
+  padding-bottom: 0;
+}
+.moot-timeline__node {
+  position: absolute;
+  left: -40px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--m-navy-2);
+  background: var(--m-paper);
+  transition: background 0.5s var(--m-ease);
+}
+.moot-timeline__item.is-passed .moot-timeline__node {
+  background: var(--m-navy-2);
+}
+.moot-timeline__item--final .moot-timeline__node {
+  border-color: var(--m-gold-deep);
+}
+.moot-timeline__item--final.is-passed .moot-timeline__node {
+  background: var(--m-gold);
+}
+.moot-timeline__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-bottom: 10px;
+}
+.moot-timeline__phase {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--m-gold-deep);
+}
+.moot-timeline__month {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--m-navy-2);
+}
+.moot-timeline__item ul {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.moot-timeline__item li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  color: var(--m-ink-2);
+  font-size: 15px;
+}
+.moot-timeline__item li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 1px;
+  background: var(--m-gold-deep);
+}
+.moot-timeline--compact .moot-timeline__item {
+  padding-bottom: 32px;
+}
+
+/* Bullets */
+.moot-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.moot-bullets li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  color: var(--m-ink-2);
+  font-size: 15px;
+}
+.moot-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 1px;
+  background: var(--m-gold-deep);
+}
+
+/* Notify band and form */
+.moot-notify {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 64px;
+  align-items: start;
+}
+.moot-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 20px;
+}
+.moot-form--single {
+  grid-template-columns: 1fr;
+}
+.moot-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.moot-field--full {
+  grid-column: 1 / -1;
+}
+.moot-field label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--m-ink-2);
+}
+.moot-field input,
+.moot-field select,
+.moot-field textarea {
+  font: inherit;
+  font-size: 15px;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--m-line);
+  border-radius: 0;
+  background: var(--m-white);
+  color: var(--m-ink);
+  transition: border-color 0.3s var(--m-ease);
+}
+.moot-field textarea {
+  height: auto;
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+.moot-field input:focus,
+.moot-field select:focus,
+.moot-field textarea:focus {
+  outline: none;
+  border-color: var(--m-navy);
+}
+.moot-section--navy .moot-field label {
+  color: rgba(255, 255, 255, 0.7);
+}
+.moot-section--navy .moot-field input,
+.moot-section--navy .moot-field select {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #fff;
+}
+.moot-section--navy .moot-field input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.moot-section--navy .moot-field select option {
+  color: var(--m-ink);
+}
+.moot-section--navy .moot-field input:focus,
+.moot-section--navy .moot-field select:focus {
+  border-color: var(--m-gold);
+}
+.moot-form__foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.moot-form__note {
+  font-size: 13px;
+  color: var(--m-muted);
+  margin: 0;
+}
+.moot-section--navy .moot-form__note {
+  color: rgba(255, 255, 255, 0.6);
+}
+.moot-form__done {
+  border: 1px solid var(--m-gold);
+  padding: 24px;
+}
+.moot-form__done p {
+  margin: 0;
+}
+
+/* Floating notify tab */
+.moot-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  writing-mode: vertical-rl;
+  background: var(--m-navy);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s var(--m-ease);
+}
+.moot-tab:hover {
+  background: var(--m-navy-2);
+}
+.moot-tab::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--m-saffron);
+}
+
+/* Facts list */
+.moot-facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--m-line);
+}
+.moot-facts li {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--m-line);
+}
+.moot-facts__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--m-muted);
+}
+.moot-facts__value {
+  color: var(--m-ink);
+}
+
+/* Story list */
+.moot-story {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: story;
+}
+.moot-story li {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--m-line);
+  color: var(--m-ink-2);
+}
+.moot-story li:first-child {
+  border-top: 1px solid var(--m-line);
+}
+.moot-story li::before {
+  counter-increment: story;
+  content: "0" counter(story);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--m-gold-deep);
+  padding-top: 3px;
+}
+
+/* FAQ */
+.moot-faq {
+  border-top: 1px solid var(--m-line);
+}
+.moot-faq details {
+  border-bottom: 1px solid var(--m-line);
+}
+.moot-faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--m-ink);
+}
+.moot-faq summary::-webkit-details-marker {
+  display: none;
+}
+.moot-faq summary::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-right: 1.5px solid var(--m-navy);
+  border-bottom: 1.5px solid var(--m-navy);
+  transform: rotate(45deg) translateY(-4px);
+  transition: transform 0.3s var(--m-ease);
+}
+.moot-faq details[open] summary::after {
+  transform: rotate(225deg) translateY(-2px);
+}
+.moot-faq__body {
+  padding: 0 0 24px;
+  color: var(--m-ink-2);
+  max-width: 760px;
+}
+.moot-faq__body p {
+  margin: 0 0 12px;
+}
+
+/* Page header */
+.moot-pagehead {
+  padding: 96px 0 72px;
+  border-bottom: 1px solid var(--m-line);
+  position: relative;
+  overflow: hidden;
+}
+.moot-pagehead .moot-lead {
+  margin-top: 24px;
+}
+.moot-pagehead__meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* Coming soon */
+.moot-soon {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 64px;
+  align-items: center;
+}
+.moot-doc {
+  border: 1px solid var(--m-line);
+  background: var(--m-white);
+  padding: 36px 32px;
+  aspect-ratio: 3 / 4;
+  max-width: 360px;
+  width: 100%;
+  justify-self: end;
+  position: relative;
+}
+.moot-doc__line {
+  height: 6px;
+  background: var(--m-stone);
+  margin-bottom: 14px;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.7s var(--m-ease);
+}
+.moot-doc.is-visible .moot-doc__line {
+  transform: scaleX(1);
+}
+.moot-doc__line--title {
+  height: 10px;
+  background: var(--m-navy);
+  width: 70%;
+  margin-bottom: 24px;
+}
+.moot-doc__line--gold {
+  background: var(--m-gold);
+  width: 32px;
+  height: 2px;
+  margin-bottom: 28px;
+}
+.moot-doc__stamp {
+  position: absolute;
+  right: 24px;
+  bottom: 28px;
+  border: 1px solid var(--m-saffron);
+  color: #b45f06;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  transform: rotate(-4deg);
+  opacity: 0;
+  transition: opacity 0.6s var(--m-ease) 1.4s;
+}
+.moot-doc.is-visible .moot-doc__stamp {
+  opacity: 1;
+}
+
+/* Agent loop */
+.moot-loop {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  margin-left: auto;
+}
+
+/* Organisers */
+.moot-org {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.moot-org img {
+  height: 56px;
+  width: auto;
+}
+.moot-org__divider {
+  width: 1px;
+  height: 48px;
+  background: var(--m-line);
+}
+.moot-org img.moot-org__ciac {
+  height: 64px;
+}
+
+/* Footer */
+.moot-footer {
+  background: var(--m-navy);
+  color: rgba(255, 255, 255, 0.72);
+  padding: 72px 0 40px;
+  font-size: 14px;
+}
+.moot-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--m-line-dark);
+}
+.moot-footer h2 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+.moot-footer h3 {
+  color: var(--m-gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.moot-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.moot-footer li {
+  margin-bottom: 10px;
+}
+.moot-footer a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+}
+.moot-footer a:hover {
+  color: #fff;
+}
+.moot-footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 28px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.moot-motion-toggle {
+  font: inherit;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Reveal */
+.moot-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s var(--m-ease), transform 0.8s var(--m-ease);
+}
+.moot-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Reduced motion, from the OS setting or the footer toggle */
+.moot-root.is-still .moot-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.moot-root.is-still .moot-river path {
+  animation: none;
+  stroke-dashoffset: 0;
+  transition: none;
+}
+.moot-root.is-still .moot-river circle,
+.moot-root.is-still .moot-doc__stamp {
+  opacity: 1;
+  transition: none;
+}
+.moot-root.is-still .moot-doc__line {
+  transform: scaleX(1);
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .moot-root *,
+  .moot-root *::before,
+  .moot-root *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .moot-root {
+    --m-section: 96px;
+  }
+  .moot-split,
+  .moot-split--even,
+  .moot-notify,
+  .moot-soon {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .moot-doc {
+    justify-self: start;
+  }
+  .moot-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .moot-grid--4 .moot-card:nth-child(4n) {
+    border-right: 1px solid var(--m-line);
+  }
+  .moot-grid--4 .moot-card:nth-child(2n) {
+    border-right: 0;
+  }
+  .moot-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .moot-footer__grid > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .moot-root {
+    --m-gutter: 16px;
+    --m-section: 72px;
+  }
+  .moot-header__bar {
+    height: 64px;
+  }
+  .moot-brand img {
+    height: 28px;
+  }
+  .moot-brand__label span,
+  .moot-header__back {
+    display: none;
+  }
+  .moot-header .moot-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .moot-brand {
+    gap: 12px;
+  }
+  .moot-brand img.moot-brand__mark {
+    height: 22px;
+  }
+  .moot-root {
+    --moot-header-h: 113px;
+  }
+  .moot-grid--3,
+  .moot-grid--2,
+  .moot-grid--4 {
+    grid-template-columns: 1fr;
+  }
+  .moot-grid .moot-card {
+    border-right: 0 !important;
+  }
+  .moot-status__row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px;
+  }
+  .moot-status__row .moot-pill {
+    justify-self: start;
+  }
+  .moot-facts li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .moot-form {
+    grid-template-columns: 1fr;
+  }
+  .moot-btn-row .moot-btn {
+    width: 100%;
+  }
+  .moot-tab {
+    display: none;
+  }
+  .moot-footer__grid {
+    grid-template-columns: 1fr;
+  }
+  .moot-pagehead {
+    padding: 64px 0 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .moot-brand .moot-brand__label,
+  .moot-brand .moot-brand__divider--label {
+    display: none;
+  }
+  .moot-root .lg-logo img {
+    height: 72px;
+  }
+}

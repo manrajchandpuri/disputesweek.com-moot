@@ -1,0 +1,21 @@
+{
+  "name": "iidw-moot-2027",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Portable /moot module for disputesweek.com with a local preview harness.",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/vite/bin/vite.js --config preview/vite.config.js",
+    "build": "node node_modules/vite/bin/vite.js build --config preview/vite.config.js",
+    "lint:copy": "node scripts/lint-copy.mjs"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "5.4.11"
+  }
+}
